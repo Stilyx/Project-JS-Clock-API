@@ -1,0 +1,265 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.morning {
+  --background: url(../images/backgroundImages/morning-background.png);
+  --timeImage: url(../images/sun.png);
+  --moreInfoBackground: rgba(255, 255, 255, 0.75);
+  --moreInfoText: #303030;
+}
+
+.night {
+  --background: url(../images/backgroundImages/night-background.png);
+  --timeImage: url(../images/moon.png);
+  --moreInfoBackground: rgba(0, 0, 0, 0.75);
+  --moreInfoText: #ffffff;
+}
+
+body {
+  background-image: var(--background);
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 100vh;
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  text-shadow: 2px 2px rgba(3, 3, 3, 0.274);
+}
+
+/* Motivation Paragraph Style */
+
+.motivation-content {
+  display: flex;
+  width: 500px;
+  flex-direction: column;
+  padding-top: 40px;
+  padding-left: 40px;
+}
+
+.motivation-message {
+  display: flex;
+  color: white;
+  align-items: center;
+  font-size: 18px;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.rotate {
+  cursor: pointer;
+  transition: 0.8s;
+}
+.rotate:hover {
+  transform: rotate(340deg);
+}
+
+.author {
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+}
+
+/* Main Clock Style */
+
+.time-region-more {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.time-message {
+  display: flex;
+  font-size: 20px;
+  letter-spacing: 4px;
+  color: white;
+}
+
+.time-message::before {
+  margin-right: 10px;
+  content: var(--timeImage);
+}
+
+.time {
+  margin: 0;
+  font-size: 160px;
+  color: white;
+}
+
+.time span {
+  font-size: 20px;
+}
+
+.region {
+  font-weight: 700;
+  font-size: 24px;
+  color: white;
+  letter-spacing: 4px;
+}
+
+.button-see-more {
+  align-self: flex-end;
+}
+
+.button-see-more button {
+  display: flex;
+  align-items: center;
+  font-weight: 700;
+  padding: 13px 26px;
+  border-radius: 28px;
+  color: rgba(0, 0, 0, 0.562);
+  border: none;
+  cursor: pointer;
+}
+
+.button-see-more img {
+  align-items: center;
+  margin-left: 13px;
+  background-color: #303030;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  object-fit: none;
+  transition: 0.5s;
+}
+
+.button-see-more button:hover img {
+  background-color: #999999;
+}
+.more-info {
+  display: flex;
+  position: fixed;
+  align-items: flex-end;
+  justify-content: center;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  bottom: -600px;
+  width: 100%;
+  gap: 160px;
+  transition: 0.5s;
+  background-color: var(--moreInfoBackground);
+}
+
+.button-text {
+  letter-spacing: 4px;
+}
+
+.arrowButton {
+  transition: 0.3s;
+}
+
+.button-see-more.active .arrowButton {
+  transform: rotate(180deg);
+}
+
+/* More info Style */
+
+.more-info.active {
+  bottom: 0px;
+}
+
+.info-content {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.bar {
+  width: 1px;
+  background-color: var(--moreInfoText);
+  height: 260px;
+}
+
+.title-text {
+  font-size: 15px;
+  letter-spacing: 3px;
+  color: var(--moreInfoText);
+  font-weight: 400;
+}
+
+.info-result {
+  color: var(--moreInfoText);
+  font-size: 56px;
+  font-weight: 700;
+}
+
+.motivation-content.hidden {
+  display: none;
+}
+
+/* Media Querie */
+
+@media (max-width: 950px) {
+  .motivation-content {
+    margin-bottom: 100px;
+    width: auto;
+    margin-right: 10px;
+  }
+
+  .motivation-message {
+    font-size: 12px;
+  }
+
+  .time-region-more {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+  }
+
+  .time-message {
+    font-size: 15px;
+  }
+
+  .time {
+    font-size: 80px;
+    margin-right: 0;
+  }
+  .time span {
+    font-size: 15px;
+  }
+  .region {
+    font-size: 15px;
+  }
+
+  .button-see-more {
+    align-self: flex-start;
+  }
+  .more-info {
+    gap: 0px;
+    width: 100%;
+    display: flex;
+    align-items: initial;
+    flex-direction: column;
+  }
+  .info-content {
+    width: 90%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .title-text {
+    width: 50%;
+    font-size: 10px;
+    align-self: center;
+    margin-left: 20px;
+    margin-bottom: 10px;
+  }
+
+  .info-result {
+    font-size: 20px;
+    display: flex;
+    justify-content: flex-end;
+    align-self: flex-end;
+    margin-bottom: 10px;
+  }
+  .bar {
+    display: none;
+  }
+}

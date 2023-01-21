@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/style.css" />
+    <title>Clock App</title>
+  </head>
+  <body>
+    <main class="container">
+      <!-- Motivation Paragraph Section -->
+      <section class="motivation-content">
+        <div class="motivation-message">
+          <p class="paragraph-motivation"></p>
+          <img src="images/changeMessage.png" alt="" class="rotate" />
+        </div>
+        <p class="author"></p>
+      </section>
+
+      <!-- Main Section "Hour, Region & Timezone" -->
+      <section class="time-region-more">
+        <div class="currently-message">
+          <p class="time-message"></p>
+          <h1 class="time"><span class="pmOrAM"></span></h1>
+          <p class="region"></p>
+        </div>
+        <div class="button-see-more">
+          <button>
+            <span class="button-text">MORE</span><img class="arrowButton" src="images/arrow.png" alt="arrow" />
+          </button>
+        </div>
+      </section>
+
+      <!-- More info Content -->
+      <section class="more-info">
+        <div class="region-dayOfYear">
+          <div class="info-content">
+            <p class="timezone title-text">CURRENT TIMEZONE</p>
+            <h2 class="zone info-result">Europe/London</h2>
+          </div>
+          <div class="info-content">
+            <p class="dayYear title-text">DAY OF THE YEAR</p>
+            <h2 class="yearNumber info-result">295</h2>
+          </div>
+        </div>
+        <span class="bar"></span>
+        <div class="dayOfWeek">
+          <div class="info-content">
+            <p class="week title-text">DAY OF THE WEEK</p>
+            <h2 class="dayNumber info-result">5</h2>
+          </div>
+          <div class="info-content">
+            <p class="weekNumberText title-text">WEEK NUMBER</p>
+            <h2 class="weekNumber info-result">42</h2>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="js/script.js"></script>
+  </body>
+</html>
