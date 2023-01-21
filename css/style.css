@@ -184,6 +184,7 @@ body {
 }
 
 .info-result {
+  width: 100%;
   color: var(--moreInfoText);
   font-size: 56px;
   font-weight: 700;
@@ -198,7 +199,7 @@ body {
 @media (max-width: 950px) {
   .motivation-content {
     margin-bottom: 100px;
-    width: auto;
+    width: 370px;
     margin-right: 10px;
   }
 
@@ -245,7 +246,7 @@ body {
   }
 
   .title-text {
-    width: 50%;
+    width: 80%;
     font-size: 10px;
     align-self: center;
     margin-left: 20px;
@@ -253,6 +254,7 @@ body {
   }
 
   .info-result {
+    width: 60%;
     font-size: 20px;
     display: flex;
     justify-content: flex-end;
