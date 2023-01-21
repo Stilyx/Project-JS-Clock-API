@@ -33,40 +33,46 @@ const changeText = ({content, author}) => {
 };
 
 const fixDate = time => (time < 10 ? '0' + time : time);
-const isDayOrNight = (time, string1, string2) => (time >= 12 && time <= 18 ? `${string1}` : `${string2}`);
+const isDayOrNight = (time, string1, string2) =>
+  time >= 12 && time <= 18 ? `${string1}` : `${string2}`;
 
 const getDate = () => {
   const date = new Date();
   const hour = fixDate(date.getHours());
   const minutes = fixDate(date.getMinutes());
   const isMorning = isDayOrNight(hour, 'MORNING', 'NIGHT');
-  const isAM = isDayOrNight(hour, 'AM', 'PM');
+  const isAM = (pmOrAm.textContent = isDayOrNight(hour, 'AM', 'PM'));
 
   timesTemp.textContent = `GOOD ${isMorning}, IT'S CURRENTLY`;
-  time.innerHTML = `${hour}:${minutes}<span>${(pmOrAm.textContent = isAM)}</span>`;
+  time.innerHTML = `${hour}:${minutes} <span>${isAM}</span>`;
   changeImage(hour);
 };
 
+const classListRemove = (tagName, className) => tagName.classList.remove(className);
+const classListAdd = (tagName, className) => tagName.classList.add(className);
+
 const changeImage = hour => {
   const isMorningOrNight = hour >= 12 && hour <= 18;
+
   if (isMorningOrNight) {
-    document.body.classList.add('morning');
-    document.body.classList.remove('night');
+    classListAdd(document.body, 'morning');
+    classListRemove(document.body, 'night');
     return;
   }
-  document.body.classList.remove('morning');
-  document.body.classList.add('night');
+  classListRemove(document.body, 'morning');
+  classListAdd(document.body, 'night');
 };
 
-const activateMoreInfo = e => {
-  button.classList.toggle('active');
-  moreInfoContent.classList.toggle('active');
-  motivationMessage.classList.toggle('hidden');
-  buttonText.textContent = 'MORE';
+const classToggle = (tagName, className) => tagName.classList.toggle(className);
 
-  if (button.classList.contains('active')) {
-    buttonText.textContent = 'LESS';
-  }
+const activateMoreInfo = e => {
+  classToggle(button, 'active');
+  classToggle(moreInfoContent, 'active');
+  classToggle(motivationMessage, 'hidden');
+
+  button.classList.contains('active')
+    ? (buttonText.textContent = 'LESS')
+    : (buttonText.textContent = 'MORE');
 };
 
 const moreInfo = ({timezone, day_of_year, day_of_week, week_number}) => {
