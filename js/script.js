@@ -33,21 +33,23 @@ const changeText = ({content, author}) => {
 };
 
 const fixDate = time => (time < 10 ? '0' + time : time);
-const isDayOrNight = time => (time <= 18 ? 'MORNING' : 'NIGHT');
-const isPMorAM = time => (time <= 18 ? 'AM' : 'PM');
+const isDayOrNight = (time, string1, string2) => (time >= 12 && time <= 18 ? `${string1}` : `${string2}`);
 
 const getDate = () => {
   const date = new Date();
   const hour = fixDate(date.getHours());
   const minutes = fixDate(date.getMinutes());
+  const isMorning = isDayOrNight(hour, 'MORNING', 'NIGHT');
+  const isAM = isDayOrNight(hour, 'AM', 'PM');
 
-  timesTemp.textContent = `GOOD ${isDayOrNight(hour)}, IT'S CURRENTLY`;
-  time.innerHTML = `${hour}:${minutes} <span class="pmOrAM">${(pmOrAm.textContent = isPMorAM(hour))}</span>`;
+  timesTemp.textContent = `GOOD ${isMorning}, IT'S CURRENTLY`;
+  time.innerHTML = `${hour}:${minutes}<span>${(pmOrAm.textContent = isAM)}</span>`;
   changeImage(hour);
 };
 
 const changeImage = hour => {
-  if (hour <= 18) {
+  const isMorningOrNight = hour >= 12 && hour <= 18;
+  if (isMorningOrNight) {
     document.body.classList.add('morning');
     document.body.classList.remove('night');
     return;
